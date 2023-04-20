@@ -8,7 +8,7 @@ const navigation = [
   { name: 'xnft 2 collector', href: '#', current: true },
 ]
 
-function classNames(...classes:any) {
+function classNames(...classes: any) {
   return classes.filter(Boolean).join(' ')
 }
 
@@ -33,13 +33,17 @@ export default function Navbar() {
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                 <div className="flex flex-shrink-0 items-center">
                   <Image
+                    width={32}
+                    height={32}
                     className="block h-8 w-auto lg:hidden"
-                    src="solana-favicon-32x32.png"
+                    src="/solana-favicon-32x32.png"
                     alt="Your Company"
                   />
                   <Image
+                    width={32}
+                    height={32}
                     className="hidden h-8 w-auto lg:block"
-                    src="solana-favicon-32x32.png"
+                    src="/solana-favicon-32x32.png"
                     alt="Your Company"
                   />
                 </div>
@@ -64,7 +68,7 @@ export default function Navbar() {
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
 
                 {/* Profile dropdown */}
-                <WalletMultiButton/>
+                <WalletMultiButton />
               </div>
             </div>
           </div>

@@ -1,4 +1,4 @@
-import Image from 'next/image' 
+import Image from 'next/image'
 import { Transition, Dialog } from '@headlessui/react'
 import {
     FolderIcon,
@@ -48,7 +48,7 @@ export default function Sidebar() {
         fetch('/api/wallets').then((res) => res.json()).then((data) => {
             setWallets(data.wallets)
             // const inUse = data.wallets.filter((w)=>w.selected)
-            const idx = data.wallets.findIndex((w:any) => w.selected)
+            const idx = data.wallets.findIndex((w: any) => w.selected)
             console.log("wallet in use: ", idx)
             // console.log(inUse)
             setSelectedWallet(data.wallets[idx])
@@ -104,8 +104,10 @@ export default function Sidebar() {
                                 <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-gray-900 px-6 ring-1 ring-white/10">
                                     <div className="flex h-16 shrink-0 items-center">
                                         <Image
+                                            height={32}
+                                            width={32}
                                             className="h-8 w-auto"
-                                            src="solana-favicon-32x32.png"
+                                            src="/solana-favicon-32x32.png"
                                             alt="Your Company"
                                         />
                                     </div>
@@ -139,8 +141,10 @@ export default function Sidebar() {
                                                     className="flex items-center gap-x-4 px-6 py-3 text-sm font-semibold leading-6 text-white hover:bg-gray-800"
                                                 >
                                                     <Image
+                                                        height={32}
+                                                        width={32}
                                                         className="h-8 w-8 rounded-full bg-gray-800"
-                                                        src="solana-favicon-32x32.png"
+                                                        src="/solana-favicon-32x32.png"
                                                         alt=""
                                                     />
                                                     <span className="sr-only">Your profile</span>
@@ -162,8 +166,10 @@ export default function Sidebar() {
                 <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-black/10 px-6 ring-1 ring-white/5">
                     <div className="flex h-16 shrink-0 items-center">
                         <Image
+                            height={32}
+                            width={32}
                             className="h-8 w-auto"
-                            src="solana-favicon-32x32.png"
+                            src="/solana-favicon-32x32.png"
                             alt="Your Company"
                         />
                     </div>
@@ -215,32 +221,32 @@ export default function Sidebar() {
 
                                 </span>
                             </li>
-                            {wallets.length > 0 && 
-                            <li className="">
-                                <span
-                                    // href="#"
-                                    className="flex items-center gap-x-4 px-6 py-3 text-sm font-semibold leading-6 text-white hover:bg-gray-800"
-                                >
-                                    <select
-                                        id="wallets"
-                                        name="wallets"
-                                        className="mt-2 block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-300 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6 bg-gray-800"
-                                        defaultValue={wallets[selectedWallet]}
-                                        onChange={(e) => {
-                                            fetch('/api/wallet/selected', {
-                                                method: 'POST',
-                                                body: JSON.stringify({
-                                                    id: e.target.value
-                                                })
-                                            })
-                                        }}
+                            {wallets.length > 0 &&
+                                <li className="">
+                                    <span
+                                        // href="#"
+                                        className="flex items-center gap-x-4 px-6 py-3 text-sm font-semibold leading-6 text-white hover:bg-gray-800"
                                     >
+                                        <select
+                                            id="wallets"
+                                            name="wallets"
+                                            className="mt-2 block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-300 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6 bg-gray-800"
+                                            defaultValue={wallets[selectedWallet]}
+                                            onChange={(e) => {
+                                                fetch('/api/wallet/selected', {
+                                                    method: 'POST',
+                                                    body: JSON.stringify({
+                                                        id: e.target.value
+                                                    })
+                                                })
+                                            }}
+                                        >
 
-                                        {wallets.map((w:any) => <option key={w.id} value={w.id}>{w.publicKey}</option>)}
-                                    </select>
-                                </span>
-                            </li>
-}
+                                            {wallets.map((w: any) => <option key={w.id} value={w.id}>{w.publicKey}</option>)}
+                                        </select>
+                                    </span>
+                                </li>
+                            }
                         </ul>
                     </nav>
                 </div>
