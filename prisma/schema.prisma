@@ -1,0 +1,46 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Wallet {
+  id        Int     @id @default(autoincrement())
+  publicKey String
+  privateKey String
+  createdAt   DateTime  @default(now())
+  balance     Float @default(0)
+  selected    Boolean @default(false)
+}
+
+model Tree {
+  id        Int     @id @default(autoincrement())
+  treeAuthority String
+  treeAddress String
+  signature  String?
+  size Int @default(0)
+    createdAt   DateTime  @default(now())
+
+} 
+
+
+model Collection {
+  id        Int     @id @default(autoincrement())
+  signature  String
+  createdAt   DateTime  @default(now())
+} 
+
+
+model Event {
+  id        Int     @id @default(autoincrement())
+  logs    Bytes?
+  action    String
+  address   String
+  createdAt   DateTime  @default(now())
+}
