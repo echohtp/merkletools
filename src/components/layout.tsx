@@ -1,5 +1,5 @@
 import Sidebar from './sidebar'
-
+import Image from 'next/image'
 
 const activityItems = [
   {
@@ -77,7 +77,7 @@ export default function Layout({ children }:any) {
                   {activityItems.map((item) => (
                     <li key={item.commit} className="px-4 py-4 sm:px-6 lg:px-8">
                       <div className="flex items-center gap-x-3">
-                        <img alt="" className="h-6 w-6 flex-none rounded-full bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500" />
+                        <Image src="" alt="" className="h-6 w-6 flex-none rounded-full bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500" />
                         <h3 className="flex-auto truncate text-sm font-semibold leading-6 text-white">{item.user.name}</h3>
                         <time dateTime={item.dateTime} className="flex-none text-xs text-gray-600">
                           {item.dateTime}

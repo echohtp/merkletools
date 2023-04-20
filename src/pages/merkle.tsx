@@ -22,6 +22,11 @@ const environments = {
     Production: 'text-indigo-400 bg-indigo-400/10 ring-indigo-400/30',
 }
 
+interface Tree {
+    treeAddress: string
+    treeAuthority: string
+    createdAt: string
+}
 
 
 const CreateMerkle: NextPage = () => {
@@ -70,7 +75,7 @@ const CreateMerkle: NextPage = () => {
 
             {/* Deployment list */}
             <ul role="list" className="divide-y divide-white/5">
-                {trees.map((tree) => (
+                {trees.map((tree: Tree) => (
                     <li key={tree.treeAddress} className="relative flex items-center space-x-4 px-4 py-4 sm:px-6 lg:px-8">
                         <div className="min-w-0 flex-auto">
                             <div className="flex items-center gap-x-3">

@@ -247,6 +247,7 @@ export default async function handler(
     isMutable: false,
     // these values are taken from the Bubblegum package
     // tokenProgramVersion: TokenProgramVersion.Original,
+    //@ts-ignore
     tokenStandard: TokenStandard.NonFungible,
   };
 

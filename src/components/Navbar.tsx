@@ -1,4 +1,5 @@
 import { Fragment } from 'react'
+import Image from 'next/image'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { WalletMultiButton } from '@solana/wallet-adapter-react-ui'
@@ -31,12 +32,12 @@ export default function Navbar() {
               </div>
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                 <div className="flex flex-shrink-0 items-center">
-                  <img
+                  <Image
                     className="block h-8 w-auto lg:hidden"
                     src="solana-favicon-32x32.png"
                     alt="Your Company"
                   />
-                  <img
+                  <Image
                     className="hidden h-8 w-auto lg:block"
                     src="solana-favicon-32x32.png"
                     alt="Your Company"

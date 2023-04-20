@@ -68,7 +68,7 @@ const CreateAirdrop: NextPage = () => {
                     <li key={deployment.id} className="relative flex items-center space-x-4 px-4 py-4 sm:px-6 lg:px-8">
                         <div className="min-w-0 flex-auto">
                             <div className="flex items-center gap-x-3">
-                                <div className={classNames(statuses[deployment.status], 'flex-none rounded-full p-1')}>
+                                <div className={classNames(statuses["online"], 'flex-none rounded-full p-1')}>
                                     <div className="h-2 w-2 rounded-full bg-current" />
                                 </div>
                                 <h2 className="min-w-0 text-sm font-semibold leading-6 text-white">
@@ -90,7 +90,7 @@ const CreateAirdrop: NextPage = () => {
                         </div>
                         <div
                             className={classNames(
-                                environments[deployment.environment],
+                                environments["Production"],
                                 'rounded-full flex-none py-1 px-2 text-xs font-medium ring-1 ring-inset'
                             )}
                         >

@@ -6,7 +6,7 @@ import bs58 from 'bs58'
 import { Keypair } from '@solana/web3.js';
 
 type Data = {
-  wallets: string
+  wallets: any[]
 }
 
 export default async function handler(

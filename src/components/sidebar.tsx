@@ -1,5 +1,4 @@
-import { Listbox } from '@headlessui/react'
-import { CheckIcon, ChevronDownIcon } from '@heroicons/react/20/solid'
+import Image from 'next/image' 
 import { Transition, Dialog } from '@headlessui/react'
 import {
     FolderIcon,
@@ -42,14 +41,14 @@ export default function Sidebar() {
     const router = useRouter()
     const [selected, setSelected] = useState(publishingOptions[0])
     const [wallets, setWallets] = useState([])
-    const [selectedWallet, setSelectedWallet] = useState()
+    const [selectedWallet, setSelectedWallet] = useState(0)
 
 
     useEffect(() => {
         fetch('/api/wallets').then((res) => res.json()).then((data) => {
             setWallets(data.wallets)
             // const inUse = data.wallets.filter((w)=>w.selected)
-            const idx = data.wallets.findIndex((w) => w.selected)
+            const idx = data.wallets.findIndex((w:any) => w.selected)
             console.log("wallet in use: ", idx)
             // console.log(inUse)
             setSelectedWallet(data.wallets[idx])
@@ -104,7 +103,7 @@ export default function Sidebar() {
                                 {/* Sidebar component, swap this element with another sidebar if you like */}
                                 <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-gray-900 px-6 ring-1 ring-white/10">
                                     <div className="flex h-16 shrink-0 items-center">
-                                        <img
+                                        <Image
                                             className="h-8 w-auto"
                                             src="solana-favicon-32x32.png"
                                             alt="Your Company"
@@ -139,7 +138,7 @@ export default function Sidebar() {
                                                     href="#"
                                                     className="flex items-center gap-x-4 px-6 py-3 text-sm font-semibold leading-6 text-white hover:bg-gray-800"
                                                 >
-                                                    <img
+                                                    <Image
                                                         className="h-8 w-8 rounded-full bg-gray-800"
                                                         src="solana-favicon-32x32.png"
                                                         alt=""
@@ -162,7 +161,7 @@ export default function Sidebar() {
                 {/* Sidebar component, swap this element with another sidebar if you like */}
                 <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-black/10 px-6 ring-1 ring-white/5">
                     <div className="flex h-16 shrink-0 items-center">
-                        <img
+                        <Image
                             className="h-8 w-auto"
                             src="solana-favicon-32x32.png"
                             alt="Your Company"
@@ -216,6 +215,7 @@ export default function Sidebar() {
 
                                 </span>
                             </li>
+                            {wallets.length > 0 && 
                             <li className="">
                                 <span
                                     // href="#"
@@ -236,10 +236,11 @@ export default function Sidebar() {
                                         }}
                                     >
 
-                                        {wallets.map((w) => <option value={w.id}>{w.publicKey}</option>)}
+                                        {wallets.map((w:any) => <option key={w.id} value={w.id}>{w.publicKey}</option>)}
                                     </select>
                                 </span>
                             </li>
+}
                         </ul>
                     </nav>
                 </div>

@@ -25,7 +25,7 @@ const environments = {
 
 const ViewWallet: NextPage = () => {
     const [open, setOpen] = useState(false)
-    const [wallet, setWallet] = useState({ balance: 0 })
+    const [wallet, setWallet] = useState({ balance: 0, id:0 })
 
     const router = useRouter()
     const { address } = router.query
@@ -39,7 +39,7 @@ const ViewWallet: NextPage = () => {
         console.log(wallet)
         if (wallet.length != 0)
             setWallet(wallet[0])
-    }, [])
+    }, [address])
 
 
     return (
